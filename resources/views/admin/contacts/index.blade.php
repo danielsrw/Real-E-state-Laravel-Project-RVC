@@ -43,10 +43,13 @@
                                         <td>{{ $contact->phone }}</td>
                                         <td>{{ $contact->message }}</td>
                                         <td>
-                                            <a href="#!">
-                                                <i class="feather icon-trash-2 ml-3 f-16 text-danger"></i>
+                                            <a href="{{ route('adminDeleteContacts', $contact->id) }}">
+                                                <input type="hidden" name="id" value="{{ $contact->id }}">
+                                                <i class="feather icon-trash-2 ml-3 f-16 text-danger" data-toggle="modal" data-target="#deleteContact{{ $contact->id }}" data-whatever="@mdo"></i>
                                             </a>
                                         </td>
+
+                                        @include('admin.contacts.delete')
                                     </tr>
                                 @endforeach
                             </tbody>

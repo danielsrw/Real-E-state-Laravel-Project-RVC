@@ -34,7 +34,7 @@ class LoginController extends Controller
         $auth = Auth::guard('web')->attempt(['username' => $request->username, 'password' => $request->password, 'active' => 1]);
 
         if ($auth) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('success', 'Welcome');
         }
 
         return redirect()->route('signin');

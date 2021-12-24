@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+use App\Models\RequestMoney;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ContactsController extends Controller
+class RequestMoneyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,8 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
-
-        return view('admin.contacts.index', compact('contacts'));
+        $requestMoney = RequestMoney::all();
+        return view('admin.requestMoney.index', compact('requestMoney'));
     }
 
     /**
@@ -24,9 +24,11 @@ class ContactsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        return view('admin.requestMoney.create');
     }
 
     /**
@@ -35,23 +37,29 @@ class ContactsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $data = request()->validate([
+            'user_id' => 'required',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'message' => 'required',
+            'amount' => 'required',
+            'reason' => 'required',
+            'status' => 'required',
         ]);
 
-        Contact::create([
+        RequestMoney::create([
+            'user_id' => $data['user_id'],
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'message' => $data['message'],
+            'amount' => $data['amount'],
+            'reason' => $data['reason'],
+            'status' => $data['status'],
         ]);
 
-        return redirect()->route('contacts');
+        return back()->with('success', "We'll let you know when admin approve your request");
     }
 
     /**
@@ -62,7 +70,25 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
+        $requestMoney = RequestMoney::all();
+
+        return view('admin.requestMoney.show', compact('requestMoney'));
+    }
+
+    public function enableMoneyRequest($id)
+    {
+        $data = RequestMoney::findOrFail($id);
+        $data->status = 0;
+        $data->save();
+        return back()->with('success','Money rejected successfully!');
+    }
+
+    public function disableMoneyRequest($id)
+    {
+        $data = RequestMoney::findOrFail($id);
+        $data->status = 1;
+        $data->save();
+        return back()->with('success','Money approved successfully!');
     }
 
     /**
@@ -96,8 +122,6 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        $data = Contact::findOrFail($id);
-        $data->delete();
-        return back()->with('success','Contact deleted successfully!');
+        //
     }
 }

@@ -5,7 +5,7 @@
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-10">
                     <div class="page-header-title">
                         <h5 class="m-b-10">Dashboard</h5>
                     </div>
@@ -13,6 +13,11 @@
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item">Dashboard</li>
                     </ul>
+                </div>
+                <div class="col-md-2">
+                	<a href="">
+                		<button class="btn btn-sm btn-primary">Edit profile</button>
+                	</a>
                 </div>
             </div>
         </div>

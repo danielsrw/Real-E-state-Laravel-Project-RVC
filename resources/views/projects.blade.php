@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="agent-section spad">
+    <section class="agent-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">

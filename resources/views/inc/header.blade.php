@@ -48,7 +48,7 @@
     <div class="hs-nav">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <nav class="nav-menu">
                         <ul>
                             <li><a href="/">Home</a></li>
@@ -58,17 +58,9 @@
                             <li><a href="/projects">Projects</a></li>
                             <li><a href="/contacts">Contact Us</a></li>
                             <li><a href="{{ route('requestServices') }}">Request Service</a></li>
+                            <li><a href="">Architecture</a></li>
                         </ul>
                     </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="hn-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                    </div>
                 </div>
             </div>
         </div>

@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
-use App\Models\Role;
-use App\Models\User;
 
-class DashboardController extends Controller
+class ClientsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('web');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +14,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $clients = Client::all();
+
+        return view('admin.clients.index', compact('clients'));
     }
 
     /**
@@ -43,13 +39,25 @@ class DashboardController extends Controller
     {
         $data = request()->validate([
             'name' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'upi' => 'required',
+            'location' => 'required',
+            'amount' => 'required',
+            'purpose' => 'required',
         ]);
 
-        Role::create([
+        Client::create([
             'name' => $data['name'],
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
+            'upi' => $data['upi'],
+            'location' => $data['location'],
+            'amount' => $data['amount'],
+            'purpose' => $data['purpose'],
         ]);
 
-        return redirect()->route('members')->with('success', 'Role added successfully');
+        return back();
     }
 
     /**
@@ -71,9 +79,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-
-        return view('admin.auth.edit', compact('user'));
+        //
     }
 
     /**

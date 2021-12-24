@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Project;
 
 class ProjectsController extends Controller
@@ -53,7 +54,7 @@ class ProjectsController extends Controller
             'description' => $data['description'],
         ]);
 
-        return redirect()->route('adminProjects');
+        return redirect()->route('adminProjects')->with('success', 'Project added successfully');
     }
 
     /**
@@ -75,9 +76,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
-
-        return view('admin.project.edit', compact('project'));
+        //
     }
 
     /**
@@ -89,21 +88,7 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = request()->validate([
-            'title' => 'required',
-            'status' => 'required',
-            'image' => '',
-            'description' => 'required',
-        ]);
-
-        Project::update([
-            'title' => $data['title'],
-            'status' => $data['status'],
-            'image' => $data['image'],
-            'description' => $data['description'],
-        ]);
-
-        return redirect()->route('adminProjects');
+        //
     }
 
     /**
@@ -114,6 +99,8 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Project::findOrFail($id);
+        $data->delete();
+        return back()->with('success','Project deleted successfully!');
     }
 }

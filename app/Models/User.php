@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
 
+    public function requestMoney()
+    {
+        return $this->hasMany(RequestMoney::class);
+    }
+
     public function checkIfUserHasRole($need_role)
     {
         return (Str::lower($need_role) == Str::lower($this->role->name)) ? true : null;

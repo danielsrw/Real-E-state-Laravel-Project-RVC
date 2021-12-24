@@ -43,7 +43,17 @@
 				<li>
 					<a href="{{ route('adminService') }}" class="pc-link"><span class="pc-micon"><i data-feather="layers"></i></span><span class="pc-mtext">Services</span></a>
 				</li>
+				<li>
+					<a href="{{ route('adminRequestMoney') }}" class="pc-link"><span class="pc-micon"><i data-feather="sunset"></i></span><span class="pc-mtext">Request Money</span></a>
+				</li>
+				<li>
+					<a href="{{ route('adminClient') }}" class="pc-link"><span class="pc-micon"><i data-feather="user-plus"></i></span><span class="pc-mtext">Clients</span></a>
+				</li>
+				<li>
+					<a href="{{ route('adminContact') }}" class="pc-link"><span class="pc-micon"><i data-feather="user"></i></span><span class="pc-mtext">Contacts</span></a>
+				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
+

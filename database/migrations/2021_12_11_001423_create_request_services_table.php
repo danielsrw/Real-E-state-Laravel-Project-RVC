@@ -22,7 +22,7 @@ class CreateRequestServicesTable extends Migration
             $table->string('p_upi')->nullable();
             $table->string('p_address')->nullable();
             $table->string('p_institution')->nullable();
-            $table->string('p_purpose')->nullable();
+            $table->string('p_description')->nullable();
             $table->string('i_name')->nullable();
             $table->string('i_applicant')->nullable();
             $table->string('i_address')->nullable();

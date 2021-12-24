@@ -22,7 +22,7 @@
                             <h4 class="mb-3 f-w-400">Signin</h4>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-                                
+
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"><i data-feather="user"></i></span>
                                     <input type="username" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}">

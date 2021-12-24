@@ -22,33 +22,12 @@
                                         <div class="tab-details">
                                             <div class="container">
                                                 <div class="property-submit-form spad">
-                                                    <form action="{{ route('personalStore') }}" method="POST">
-                                                        @csrf
+                                                    <p>Doe your request include valuation?</p>
 
-                                                        <input type="hidden" name="category" value="1">
-                                                        <div class="pf-name mb-3">
-                                                            <input type="text" name="p_name" placeholder="Enter Name*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="email" name="p_email" placeholder="Enter Email*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="number" name="p_phone" placeholder="Enter Phone Number*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="text" name="p_upi" placeholder="Enter UPI*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="text" name="p_address" placeholder="Enter Address*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="text" name="p_institution" placeholder="Enter Institution*">
-                                                        </div>
-                                                        <div class="pf-name mb-3">
-                                                            <input type="text" name="p_purpose" placeholder="Purpose of Service*">
-                                                        </div>
-                                                        <button type="submit" class="site-btn w-100">Submit</button>
-                                                    </form>
+                                                    <div class="d-flex justify-content-between">
+                                                        <a href="{{ route('requestServicesWithoutValution') }}" class="btn btn-sm btn-primary w-25">No</a>
+                                                        <a href="{{ route('requestServicesWithValution') }}" class="btn btn-sm btn-primary w-25">Yes</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
